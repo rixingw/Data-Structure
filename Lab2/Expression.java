@@ -4,22 +4,18 @@
  *  Lab 2
  * Expression Logic
  */
-import java.util.Stack;
- 
+
 public class Expression
 {
     
-    public Expression(){ 
-        System.out.println("Expression initialzed");
-    }
     
     /**
      Takes in an infix expressing,  and attempts to 
      */
     public int evaluate(String infixExpression)
     { 
-        Stack<Integer> operands =  new Stack<>();
-        Stack<Character> operators = new Stack<>();
+        ArrayStack<Integer> operands =  new ArrayStack<>();
+        ArrayStack<Character> operators = new ArrayStack<>();
         char[] array = infixExpression.toCharArray();
         
         for (int i = 0; i < array.length; i++)
@@ -51,7 +47,7 @@ public class Expression
  
             else
             {
-                while ( hasGreaterPrecedence(array[i], operators.peek()) && !operators.empty()){
+                while (!operators.isEmpty() && hasGreaterPrecedence(array[i], operators.peek())  ){
                 	int result = operate(operators.pop(), operands.pop(), operands.pop());
                     operands.push(result);
                 } 
@@ -60,7 +56,7 @@ public class Expression
         }
  
     
-        while (!operators.empty()){
+        while (!operators.isEmpty()){
         		int result = operate(operators.pop(), operands.pop(), operands.pop());
         		 operands.push(result);
         }
