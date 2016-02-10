@@ -9,10 +9,12 @@ public class Expression
 {
     
     
-    /**
-     Takes in an infix expressing,  and attempts to 
+    /** Takes in an infix expressing,  and attempts to
+     @param infixExpression The string in infix format to evaluate
+     @throws IllegalArgumentException when trying to divide by zero
+     @return the result of the expression
      */
-    public int evaluate(String infixExpression)
+    public int evaluate(String infixExpression) throws IllegalArgumentException
     { 
         ArrayStack<Integer> operands =  new ArrayStack<>();
         ArrayStack<Character> operators = new ArrayStack<>();
@@ -67,13 +69,17 @@ public class Expression
     
    
 
-    /**
-        Handle calculation
+    /** This method calculates the result in format of (+ num1 num2)
+     @param operator  (+,-,/,*)
+     @param num1 The first number
+     @param num2 The second number
+     @throws IllegalArgumentException if try to divide by zero
+     @return true is operator1 has greater precedence, else false
      */
     private int operate(char operator, int num1, int num2)
     {   
-       //Handle devide by zero exception 
-      if (operator == '/' && num1 == 0){ throw new IllegalArgumentException("Argument 'divisor' is 0"); }
+       //Handle divide by zero exception
+      if (operator == '/' && num1 == 0){ throw new IllegalArgumentException("Cannot divide 0"); }
        // Continue
       if (operator == '+')
             return num2 + num1;
@@ -88,8 +94,10 @@ public class Expression
     }
  
     
-    /**
-        This function determines which operator has more precedence
+    /** This function determines which operator has more precedence
+     @param  operator1 the first operator (+,-,/,*,etc)
+     @param operator2
+     @return true is operator1 has greater precedence, else false
      */
     private boolean hasGreaterPrecedence (char operator1, char operator2)
     {   
