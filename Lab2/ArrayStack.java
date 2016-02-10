@@ -3,7 +3,7 @@ import java.util.EmptyStackException;
 
 public class ArrayStack <T> implements StackInterface<T>  {
 	private T[] array;
-	private int topIndex = -1;
+	private int topIndex = -1; 
 
     /** Adds a new entry to the top of this stack.
      @param newEntry  An object to be added to the stack. */

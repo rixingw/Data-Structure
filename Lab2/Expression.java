@@ -2,7 +2,7 @@
 /**
  *  Rixing Wu
  *  Lab 2
- * Expression Logic
+ * Expression Logic 
  */
 
 public class Expression
