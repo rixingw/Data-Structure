@@ -1,23 +1,23 @@
 
-
 /**
 
 class Passage
 */
 
-
-
-public class Passenger{
+public class Passenger
+{
 	private int destination;
 
-	public Passenger(int currentStation){
+	public Passenger(int currentStation)
+	{
 	//Set destination to (0 - 4) but not currentStaion
 
 
 	}
 
-	public int getDestination(){
-	return destination;
+	public int getDestination()
+	{
+		return destination;
 	}
 
 }
