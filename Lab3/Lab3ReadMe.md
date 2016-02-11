@@ -9,3 +9,7 @@ Mapping
     
     
     S # # # # S # # # # S # # # # S # # # # S
+
+    Here's an example with trains
+
+    S # # T # S # # # # T # # T # S # # # # S
