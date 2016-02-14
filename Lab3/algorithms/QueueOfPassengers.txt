@@ -6,3 +6,40 @@ Gregory Lee
 
 Lab 3 Train Problem
 Due February 16th, 2016
+
+Algorithm for QueueOfPassengers / implementation of queue ADT.
+
+The queue is constructed with a specified data type, type T.
+The class is created with a generic data type for more flexibility.
+
+The queue uses a first in, first out structure.
+
+1. The queue is constructed:
+	- The constructor should be called with an integer to specify initial capacity.
+	- If it is called without passing in an integer, it will instead use a default capacity of 50 elements.
+	- An array is created to store the contents of the queue. Its initial size will be one larger than the capacity specified for the constructor.
+	- The queue class contains a front index to show the front of the queue, and a back index, to specify the back of the queue.
+	- When the queue is constructed the front index is set to zero and the back index is set to the capacity of the queue.
+	
+2. A method is encluded to ensure capacity (see if there is room in the queue).
+	- Check if queue is full, If it is, a new array should be constructed with double the initial capacity.
+		- Then, the contents of the array should be copied over to the new larger array.
+			-Do not start from index zero in the old array, instead start from the front index
+			-This straightens out the order of the array.
+		
+	- If the array is not full, nothing happens.
+	
+3. The enqueue method adds to the queue. An item of type T is passed in.
+	- First, Ensure that the queue is initialized.
+	- Then, Ensure that the queue is not full.
+	- Set the queue's back index to the next index in the array.
+	- Add the item given to the array at the back index. (FIFO)
+	
+4. The method getFront returns the value at the front index in the array, if the array is not empty.
+
+5. The method dequeue returns the front if the array is not empty, and removes the front from the queue.
+	- Pulls data from array at front index and stores in a variable.
+	- Remove that data from the array and increase the front index.
+	- Return the data.
+	
+6. The method isEmpty returns true or false based on whether the queue is empty or not.
