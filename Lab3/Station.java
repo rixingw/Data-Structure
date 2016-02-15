@@ -14,10 +14,12 @@
 public class Station{
 
     public boolean isTerminal;
+    private QueueOfPassengers line;
+    private int stationNumber;
     
-    public Station(boolean isTerminal){
-
-
-
+    public Station(boolean terminality, int inputNumber){
+        isTerminal = terminality;
+        line = new QueueOfPassengers(20);
+        stationNumber = inputNumber;
     }
 }
