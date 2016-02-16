@@ -5,15 +5,17 @@ Rixing Wu
 Gregory Lee
 
 Lab 3 Train Problem
-Due February 16th, 2016
+Due February 23rd, 2016
 
 
 Passenger Algorithm
 
 Class Variables
-1. Initialize an integer that randomly generates and tracks which destination/station (0-4) the passenger is going to
+1. Initialize an integer that randomly generates which destination/station that the passenger is going to
+2. The destination/station is randomly generated bettwen 0 and 4
 
 Passenger Contructor
 1. Have the passenger's current station as the parameter
 2. Verify that the passenger's destination is not at the current station he/she is currently
 3. Generete a number that is not the as the parameter(the current station) and set it to passenger's destination
+4. Return the passenger's destination
