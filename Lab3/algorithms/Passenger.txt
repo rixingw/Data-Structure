@@ -18,4 +18,6 @@ Passenger Contructor
 1. Have the passenger's current station as the parameter
 2. Verify that the passenger's destination is not at the current station he/she is currently
 3. Generete a number that is not the as the parameter(the current station) and set it to passenger's destination
-4. Return the passenger's destination
+
+getDestination Method
+1. Return the passenger's destination
