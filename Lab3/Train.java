@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* train
  * - currentStation
  * - passengerBoard
@@ -65,6 +66,21 @@ public class Train
 	{
 		return "";   
 	}
+=======
+/**
+ * Group 14:
+ * Terrance Curley
+ * Elvin Xu
+ * Rixing Wu
+ * Gregory Lee
+ * 
+ * Lab 3 Train Problem
+ * Due February 16th, 2016
+ * 
+ */
+
+public class Train{
+>>>>>>> 1870e94e3d6b44a1ca4cb2d0187b900c148cd435
 	
 	/*
 	 * turns the train around 

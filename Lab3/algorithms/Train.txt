@@ -1,0 +1,43 @@
+Group 14:
+Terrance Curley
+Elvin Xu
+Rixing Wu
+Gregory Lee
+
+Lab 3 Train Problem
+Due February 16th, 2016
+
+Train Algorithm
+
+Class variables 
+1.	Initialize a string that keeps track of direction
+2.	Initialize an int that holds the capacity
+3.	Initialize an array of passengers
+
+Train Constructor
+1.	set the direction to a set method variable
+2.	set the capacity to 20
+3.	initialize all passengers from the array as passengers
+
+Current Station
+1.	get current station from 
+2.	return current station  
+
+Disembark and Board
+1.	passengers whos destinations are equal to the station is removed
+2.	count however many passengers leave the train
+3.	add said number of passengers until capacity is full
+
+Interval
+1.	returns the inverval between the stations (set to 5 seconds)
+
+Get passenger destination
+1.	iterate through all passengers on the train 
+2.	get their destination from passenger class
+
+Turn around
+1.	checks to see if the train has reached the station at the end
+2.	then changes the direction variable to west if east or if east to west
+3.	returns the direction
+
+
