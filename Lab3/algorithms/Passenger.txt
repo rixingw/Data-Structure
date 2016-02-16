@@ -6,3 +6,12 @@ Gregory Lee
 
 Lab 3 Train Problem
 Due February 16th, 2016
+
+
+Class Variables
+1. Initialize an integer that randomly generates and tracks which destination/station (0-4) the passenger is going to
+
+Passenger Contructor
+1. Have current station as the parameter
+2. Generete a number that is not the as the parameter(the current station)
+3. Verify that the passenger's destination is not at the current station he/she is currently
