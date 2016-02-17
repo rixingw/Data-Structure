@@ -6,7 +6,7 @@
  * Gregory Lee
  * 
  * Lab 3 Train Problem
- * Due February 16th, 2016
+ * Due February 23rd, 2016
  * 
  * The following class is an implementation of the Queue ADT using a circular array.
  * This implementation was creating using the help of Frank Carrano's textbook
