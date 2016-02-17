@@ -6,20 +6,36 @@
  * Gregory Lee
  * 
  * Lab 3 Train Problem
- * Due February 16th, 2016
+ * Due February 23rd, 2016
  * 
  */
 
+import java.util.Random;
+public class Station implements RouteListener{
 
-public class Station{
-
-    public boolean isTerminal;
     private QueueOfPassengers line;
-    private int stationNumber;
+    private int position;
+    private Random passengerGenerator;
     
-    public Station(boolean terminality, int inputNumber){
-        isTerminal = terminality;
+    public Station(int inputNumber){
         line = new QueueOfPassengers(20);
-        stationNumber = inputNumber;
+        position = inputNumber;
+        passengerGenerator = new Random();
+    }
+    
+    public void simulateTimePassed(RouteEvent event){
+        if (passengerGenerator.nextInt(4) == 0)
+        {
+            Passenger newGuy = new Passenger(position);
+            line.enqueue(newGuy);
+        }
+    }
+    
+    public QueueOfPassengers getQueue(){
+        return line;
+    }
+    
+    public int getPosition(){
+        return position;
     }
 }
