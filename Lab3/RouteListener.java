@@ -2,6 +2,8 @@
 
 public interface RouteListener{
 
-	public void simulateTimePassed();
+	public void simulateTimePassed(RouteEvent routeEvent);
 	
 }
+
+
