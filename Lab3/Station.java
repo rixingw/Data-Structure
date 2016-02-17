@@ -23,7 +23,7 @@ public class Station implements RouteListener{
         passengerGenerator = new Random();
     }
     
-    public void simulateTimePassed(){
+    public void simulateTimePassed(RouteEvent event){
         if (passengerGenerator.nextInt(4) == 0)
         {
             Passenger newGuy = new Passenger(position);
