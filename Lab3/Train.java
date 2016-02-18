@@ -1,88 +1,106 @@
-<<<<<<< HEAD
 /* train
  * - currentStation
  * - passengerBoard
- * - pasengerRemove
- * - interval
+ * - pasengerRemove 
+ * - interval 
  * = direction traveled 
- * = capacity 
- * =array of passengers
+ * = capacity  
+ * =array of passengers 
  * =function that checks passenger destination
  * = check to see if terminal then turn train around 
  * list for array of passengers 
- */
+ */ 
 
-public class Train
-{
-	private static String direction; 
-	private int capacity; 
-	Passenger[] dood = new Passenger[20];
-	
-	public Train()
-	{
-		direction = "east";
-		capacity = 20; 
-		for (int i = 0; i < 20; i++)
-		{
-			dood[i] = new Passenger(0); 
-		}
-	}
-	/*
-	 * returns the current station
-	 */
-	public String currentStation()
-	{
-		return ""; 
-	}
-	
-	/*
-	 * passengers board train
-	 */
-	public void board()
-	{
-	
-	}
-	
-	/*
-	 * removes passengers from the train 
-	 */
-	public void disembark()
-	{
-		
-	}
-	
-	/*
-	 * interval between stations 5 seconds
-	 */
-	public int interval()
-	{
-		return 0; 
-	}
-	
-	/* 
-	 * returns the passenger destination 
-	 */
-	public String getPassengerDestination()
-	{
-		return "";   
-	}
-=======
 /**
- * Group 14:
- * Terrance Curley
+ * Group 14: 
+ * Terrance Curley 
  * Elvin Xu
- * Rixing Wu
+ * Rixing Wu  
  * Gregory Lee
  * 
  * Lab 3 Train Problem
  * Due February 16th, 2016
- * 
  */
-
-public class Train{
->>>>>>> 1870e94e3d6b44a1ca4cb2d0187b900c148cd435
+public class Train implements RouteListener 
+{
+	private static String direction; 
+	private int seatsRemaining; 
+	private int currentStation; 
+	QueueOfPassengers<Passenger> trainQueue = new QueueOfPassengers<>(20); 
+	QueueOfPassengers<Passenger> exitQueue = new QueueOfPassengers<>(20); 
+	QueueOfPassengers<Passenger> tempQueue = new QueueOfPassengers<>(20); 
+	
+	public Train(String startingDirection, int startingStation)
+	{
+		direction = startingDirection; 
+		seatsRemaining = 20; 
+		currentStation = startingStation; 
+	}
 	
 	/*
+	 * returns the current station
+	 */
+	public int getCurrentStation()
+	{
+		return currentStation;  
+	}
+	
+	/*
+	 * passengers disembark and then new passengers board train
+	 */
+	public void disembarkAndBoard(QueueOfPassengers<Passenger> queue)
+	{
+		//adds as many people to train if the train is empty
+		if (seatsRemaining == 20)
+		{
+			for (int i = 0; i < 20; i++) 
+			{
+				trainQueue.enqueue(queue.getFront()); 
+			}
+			seatsRemaining = 0; 
+		}
+		
+		//remove people whose destination = current station
+		int i; 
+		for (i = 0; i > seatsRemaining; i++)
+		{
+			if (currentStation == trainQueue.getFront().getDestination())
+			{
+				exitQueue.enqueue(trainQueue.getFront()); 
+				trainQueue.dequeue(); 
+			} 
+			else //moves passengers whose destination != to the current station into a temp queue to allow for an iteration through the queue 
+			{
+				tempQueue.enqueue(trainQueue.getFront());
+				trainQueue.dequeue(); 
+			}
+			seatsRemaining += i; 
+
+		}	
+		while(!tempQueue.isEmpty()) //restores people in tempQueue back into the main queue
+		{
+			trainQueue.enqueue(tempQueue.getFront());
+			tempQueue.dequeue(); 
+		}
+		exitQueue.clear(); //passengers leave the train 
+		
+		//adds passengers to the train
+		for (int j = 0; j < seatsRemaining; j++)
+		{
+			trainQueue.enqueue(queue.getFront());
+		}
+	
+	}
+	
+	/* 
+	 * returns the passenger destination  
+	 *
+	public int getPassengerDestination()
+	{
+		return trainQueue.getFront().getDestination();  
+	}
+	
+	/* 
 	 * turns the train around 
 	 */
 	public String turnAround()
@@ -94,8 +112,20 @@ public class Train{
 		else
 		{
 			direction = "east"; 
-		}
+		} 
 		return direction; 
+	}
+
+	/*
+	 * implmenet route listener (in interface method)
+	 * - move method
+	 * - check boundary
+	 * add simulate time past, use things in train route
+	 */  
+	public void simulateTimePassed(RouteEvent routeEvent) 
+	{
+		// TODO Auto-generated method stub
+		
 	}
 
 }
