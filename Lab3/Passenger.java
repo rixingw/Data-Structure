@@ -19,7 +19,7 @@ public class Passenger{
     //note a single Random object is reused here
     	
     	int testDestination = getStation();
-    	if (testDestination == currentStation){
+    	if (testDestination != currentStation){
     		getStation();
     	}
     	
