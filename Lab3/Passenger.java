@@ -46,11 +46,11 @@ public class Passenger{
     public int getStation(){
     	Random randomGenerator = new Random();
     	destination = randomGenerator.nextInt(5);
-		return destination;
+	return destination;
     }
 
 
-	public int getDestination(){
+    public int getDestination(){
         return destination * 5;
     }
 
