@@ -1,8 +1,8 @@
 /**
  * Group 14:
+ *	Rixing Wu
  * Terrance Curley
  * Elvin Xu
- * Rixing Wu
  * Gregory Lee
  * 
  * Lab 3 Train Problem
@@ -18,12 +18,21 @@ import java.lang.StringBuilder;
 
 
 
+/** 
+	TrainRoute is a timertask object provided with run().
+	Each char in stringRepresentable reflects the position of each block of the track.
+ */
 public class TrainRoute extends TimerTask{
+
 
 	private final String stringRepresentable = "S----S----S----S----S";
 	private RouteListener[] listeners;
 	private RouteEvent event;
 
+	/** 
+		In the constructor: Trains and stations are created as RouteListener Object, 
+   		 which store in listeners arraylist
+   	*/
 	public TrainRoute(){
 		event = new RouteEvent(this);
 
@@ -39,6 +48,10 @@ public class TrainRoute extends TimerTask{
 		listeners =  new RouteListener[]{s1, s2, s3, s4, s5, t1, t2, t3};
 	}
 	
+	/** run() is from the superclass, Invokes every second (see main() )
+		-loops each object in listeners array and call their respected simulateTimePassed().
+		- (Train and Station implement RouteListener Interface).
+		- Prints a string that respresents the route system as a whole*/ 
 
 	public void run() {
       	for (int i = 0; i < listeners.length; i++) {
@@ -49,6 +62,12 @@ public class TrainRoute extends TimerTask{
   	}
 
 
+  	/**
+  	 This method is provided to Train objects to call when appropriate. Such as when a train is arrived to a station
+  		@param intersection : The postion of the station (0,5,10,15, or 20)
+  		-Unload passsengers from the respected train
+  		-Board passengers from the respected station
+  	*/
 	public void handleStationEvents(int intersection){
 		Train train = null;
 		Station station = null;
@@ -82,8 +101,15 @@ public class TrainRoute extends TimerTask{
 
 	}
 	
+	/** 
+	Method prints the Route System
+	 dash(-) = empty block
+	 S = Station
+	 R = Red Train
+	 G = Green Train
+	 O = Orange Train 
+	 */
 	private void printRepresentable(){   
-
 
    		Train redline = (Train)listeners[5];
    		Train greenline = (Train)listeners[6];
@@ -105,6 +131,12 @@ public class TrainRoute extends TimerTask{
 		System.out.println(rail);
 	}
 
+
+
+	/**
+		Main() create trainroute
+		- Run every x seconds
+	*/
     public static void main(String[] args){
 			TrainRoute trainRoute = new TrainRoute();
 			Timer timer = new Timer();
