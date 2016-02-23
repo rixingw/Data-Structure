@@ -8,224 +8,90 @@
  * Lab 3 Train Problem
  * Due February 16th, 2016
  */
-public class Train implements RouteListener 
-{
-	private static String direction;  
-	private static int seatsRemaining; 
-	private static int currentStation;  
-	private static QueueOfPassengers<Passenger> trainQueue = new QueueOfPassengers<>(20); 
-	private static QueueOfPassengers<Passenger> exitQueue = new QueueOfPassengers<>(20); 
-	private static QueueOfPassengers<Passenger> tempQueue = new QueueOfPassengers<>(20); 
-	
-	public Train(String startingDirection, int startingStation)
-	{
-		direction = startingDirection; 
-		seatsRemaining = 20;  
-		currentStation = startingStation * 5; 
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import java.util.List;
+
+public class Train implements RouteListener{
+
+	private List<Passenger> passengers = new ArrayList<>();
+	private int position;
+	private int directionVector = 1;
+	private final int capacity = 20;
+
+
+	public Train( int initialPosition){
+		position = initialPosition;
 	}
 	
-	/**
-	 * moves train to next station 
-	 */
-	public void goToNextStation()
-	{
-		currentStation += 5; 
-	}
-	
-	/**
-	 * Retrieves the current station
-	 * @return currentStation
-	 */
-	public int getCurrentStation()
-	{
-		return currentStation;  
-	}
-	
-	/**
-	 * gets the direction of the train
-	 * @return direction
-	 */
-	public String getDirection()
-	{
-		return direction; 
-	} 
-	
-	/**
-	 * adds people from the queue of passengers onto the train. will not over fill the train 
-	 * @param queue
-	 */
-	public void addToTrain(QueueOfPassengers<Passenger> queue)
-	{
-		//adds as many people to train if the train is empty
-		if (seatsRemaining == 20)
-		{
-			while (!queue.isEmpty()) 
-			{
-				trainQueue.enqueue(queue.getFront()); 
-				queue.dequeue(); 
-				seatsRemaining--;
-			} 
-			  
-		}	
-		else //adds passengers to the train
-		{
-			for (int j = 0; j < seatsRemaining; j++)
-			{
-				trainQueue.enqueue(queue.getFront());  
-				queue.dequeue();  
+        /**
+         * If a passenger has the trains current position as their destination,
+         * they get off of the train here.
+         */
+	public void  unloadPassengers(){
+		Iterator<Passenger> i = passengers.iterator();
+			while (i.hasNext()) {
+		 	  Passenger p = i.next();
+		   		if (p.getDestination() == position){
+				   i.remove();
 			}
-		} 
-		displayQueue(trainQueue); 
-	}
-	 
-	/**
-	 * removes passengers from the train if the train is at their destination  
-	 */
-	public void removeFromTrain()
-	{
-		while (!trainQueue.isEmpty()) 
-		{ 
-			if (trainQueue.getFront().getDestination() == currentStation) 
-			{
-				exitQueue.enqueue(trainQueue.dequeue());  
-				seatsRemaining++; 
-			}  
-			else //moves passengers whose destination != to the current station into a temp queue 
-			{ 
-				tempQueue.enqueue(trainQueue.dequeue()); 
-			}
-		} 
-		
-		while(!tempQueue.isEmpty()) //restores people in tempQueue back into the main queue
-		{
-			trainQueue.enqueue(tempQueue.getFront());
-			tempQueue.dequeue(); 
-		}  
-		//passengers leave the train  
-		exitQueue.clear(); 
-		displayQueue(trainQueue);
-		tempQueue.clear(); 
-	}
-	
-	/**
-	 * changes the direction of the train 
-	 * @return direction 
-	 */
-	public String turnAround() 
-	{
-		if (direction.equals("east"))
-		{
-			direction = "west"; 
 		}
-		else
-		{
-			direction = "east"; 
-		} 
-		return direction;  
-	}
-	
-	/**
-	 * displays the destinations of the passengers in the given queue 
-	 * @param queue
-	 */
-	public void displayQueue(QueueOfPassengers<Passenger> queue)// int capacity)
-	{
-		//displays elements in queue then puts queue elements into temp queue
-		while(!queue.isEmpty())
-		{
-			System.out.print(queue.getFront().getDestination() + " ");
-			tempQueue.enqueue(queue.getFront());
-			queue.dequeue();  
-		} 
-		System.out.println();
-		//puts elements from temp queue back into queue
-		while(!tempQueue.isEmpty())
-		{
-			queue.enqueue(tempQueue.getFront()); 
-			tempQueue.dequeue(); 
-		}
+
 	}
 
-	/*
-	 * implmenet route listener (in interface method)
-	 * - move method
-	 * - check boundary
-	 * add simulate time past, use things in train route
-	 */  
-	public void simulateTimePassed(RouteEvent routeEvent) 
-	{
-		
-		
-	} 
-	//method tester 
-	public static void main(String [] args)
-	{ 
-		Train t1 = new Train("west", 0); 
-		
-		QueueOfPassengers<Passenger> queue = new QueueOfPassengers<>(20);
-		Passenger[] dood = new Passenger[20]; 
-		
-		for (int i = 0; i < 10; i++)
-		{  
-			dood[i] = new Passenger(2);  
-		}  
-		for (int i = 10; i < 20; i++)  
-		{
-			dood[i] = new Passenger(3); 
-		}  
-		 
-		for (int i = 0; i < 20; i++) 
-		{ 
-			queue.enqueue(dood[i]); 
-		} 
-		
-		System.out.println("Current direction is " + t1.getDirection()); 
-		t1.turnAround();
-		System.out.println("New direction is " + t1.getDirection() + "\n");
-		
-		System.out.println("The current station is " + t1.getCurrentStation());
-		System.out.println("Station Queue: ");  
-		t1.displayQueue(queue); 
-		 
-		System.out.println("add people to train"); 
-		t1.addToTrain(queue); 
-		
-		System.out.println("remove people whos destinaton = station"); 
-		t1.removeFromTrain();
-		
-		System.out.println("Train goes to next station\n"); 
-		t1.goToNextStation(); 
-		
-		QueueOfPassengers<Passenger> queue2 = new QueueOfPassengers<>(20);
-		Passenger[] person = new Passenger[20]; 
-		for (int i = 0; i < 20; i++)  
-		{
-			person[i] = new Passenger(1); 
-		} 
-		for (int i = 0; i < 20; i++) 
-		{  
-			queue2.enqueue(person[i]);  
-		}
-		
-		System.out.println("The current station is " + t1.getCurrentStation());
-		System.out.println("Station Queue: "); 
-		t1.displayQueue(queue2);
-		
-		System.out.println("add people to train");
-		t1.addToTrain(queue2);
-		
-		System.out.println("remove people whos destination = station");
-		t1.removeFromTrain();
-		 
-		System.out.println("Train goes to next station\n");
-		t1.goToNextStation();
-		
-		System.out.println("The current station is " + t1.getCurrentStation());
-		
-		System.out.println("no one to add only remove");
-		t1.removeFromTrain(); 
-		
-		
+        /**
+         * @return number of seats remaining on the train.
+         */
+	public int getRemainingSeats(){
+		return capacity - passengers.size();
 	}
 
+        /**
+         * @return number of passengers currently on the train.
+         */
+	public int getCurrentSize(){
+		return passengers.size();
+	}
+	
+        /**
+         * Adds a passenger to the train.
+         * @param p 
+         */
+	public void boardPassenger(Passenger p){
+		passengers.add(p);
+	}
+
+        /**
+         * Handles the events that happen every tick.
+         * @param routeEvent 
+         */
+	public void simulateTimePassed(RouteEvent routeEvent){
+		if (position % 5 == 0){
+			//	
+			TrainRoute tr = (TrainRoute)routeEvent.getSource();
+			tr.handleStationEvents(position);
+		}
+			moveTrain();
+	}
+	/**
+         * @return position of the train.
+         */
+	public int getCurrentPosition(){
+		return position;
+	}
+
+        /**
+         * Changes the train's position based on direction.
+         */
+	private void moveTrain(){
+		if (position == 0)
+			directionVector = 1;	
+		else if (position == 20)
+			directionVector = -1;
+	
+	position += directionVector;
+
+	}	
 }

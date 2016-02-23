@@ -1,4 +1,3 @@
-
 /**
  * Group 14:
  * Terrance Curley  
@@ -27,6 +26,10 @@ public class Train implements RouteListener{
 		position = initialPosition;
 	}
 	
+        /**
+         * If a passenger has the trains current position as their destination,
+         * they get off of the train here.
+         */
 	public void  unloadPassengers(){
 		Iterator<Passenger> i = passengers.iterator();
 			while (i.hasNext()) {
@@ -38,19 +41,32 @@ public class Train implements RouteListener{
 
 	}
 
+        /**
+         * @return number of seats remaining on the train.
+         */
 	public int getRemainingSeats(){
 		return capacity - passengers.size();
 	}
 
+        /**
+         * @return number of passengers currently on the train.
+         */
 	public int getCurrentSize(){
 		return passengers.size();
 	}
 	
+        /**
+         * Adds a passenger to the train.
+         * @param p 
+         */
 	public void boardPassenger(Passenger p){
 		passengers.add(p);
 	}
 
-
+        /**
+         * Handles the events that happen every tick.
+         * @param routeEvent 
+         */
 	public void simulateTimePassed(RouteEvent routeEvent){
 		if (position % 5 == 0){
 			//	
@@ -59,11 +75,16 @@ public class Train implements RouteListener{
 		}
 			moveTrain();
 	}
-	
+	/**
+         * @return position of the train.
+         */
 	public int getCurrentPosition(){
 		return position;
 	}
 
+        /**
+         * Changes the train's position based on direction.
+         */
 	private void moveTrain(){
 		if (position == 0)
 			directionVector = 1;	

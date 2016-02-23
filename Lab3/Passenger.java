@@ -12,43 +12,32 @@
 import java.util.Random;
 
 public class Passenger{
+
     private int destination;
 
     public Passenger(int currentStation){
-    //Set destination to (0 - 4) but not currentStaion
-    //note a single Random object is reused here
-    	
     	int testDestination = getStation();
     	while (testDestination == currentStation){
-    		getStation();
+    		testDestination = getStation();
     	}
-    	getDestination();
-    }
-    
-    public int getStation(){
-    	Random randomGenerator = new Random();
-    	destination = randomGenerator.nextInt(5);
-	return destination;
+    	destination = testDestination;
     }
 
+    /**
+     * randomly generates the station that the passenger will appear at.
+     * @return the initial station of the passenger.
+     */
+    private int getStation(){
+    	Random randomGenerator = new Random();
+    	return randomGenerator.nextInt(5);
+    }
+
+    /**
+     * @return the passenger's destination.
+     */
     public int getDestination(){
         return destination * 5;
     }
 }
 
-/*
-Random randomGenerator = new Random();
-for (int i = 0; i <= 100; i++){
-  destination = randomGenerator.nextInt(4);
-  while (destination != currentStation){
-	  System.out.println("Passenger " + i + " 's destination goes to " + destination);
-      getDestination();
-  } */
-  
-  /*
-  if (destination != currentStation){
-	  System.out.println("Passenger " + i + " 's destination goes to " + destination);
-      getDestination();
-  }
-  else
-	  destination = randomGenerator.nextInt(4);*/ 	
+

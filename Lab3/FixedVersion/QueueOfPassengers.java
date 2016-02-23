@@ -1,12 +1,4 @@
-
-import java.util.ArrayList;
-import java.lang.StringBuilder;
-
-
-public class QueueOfPassengers<T> implements QueueInterface<T>{
-
-
-	/**
+ /**
  * Group 14:
  * Terrance Curley
  * Elvin Xu
@@ -14,13 +6,16 @@ public class QueueOfPassengers<T> implements QueueInterface<T>{
  * Gregory Lee
  * 
  * Lab 3 Train Problem
- * Due February 16th, 2016
+ * Due February 23rd, 2016
  * 
  * The following class is an implementation of the Queue ADT using a circular array.
  * This implementation was creating using the help of Frank Carrano's textbook
  * Data Structures and Abstractions with Java, 4th ed. Chapter 11.
  */
+import java.util.ArrayList;
+import java.lang.StringBuilder;
 
+public class QueueOfPassengers<T> implements QueueInterface<T>{
 
     private T[] queue;
     
