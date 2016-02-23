@@ -92,9 +92,9 @@ public class TrainRoute extends TimerTask{
 
 		StringBuilder rail = new StringBuilder(stringRepresentable);
 
-		rail.setCharAt(redline.getCurrentPosition(), 'T');
-		rail.setCharAt(greenline.getCurrentPosition(), 'T');
-		rail.setCharAt(orangeLine.getCurrentPosition(), 'T');
+		rail.setCharAt(redline.getCurrentPosition(), 'R');
+		rail.setCharAt(greenline.getCurrentPosition(), 'G');
+		rail.setCharAt(orangeLine.getCurrentPosition(), 'O');
 
 		System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"); 
 		
