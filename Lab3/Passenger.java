@@ -15,30 +15,25 @@ public class Passenger{
     private int destination;
 
     public Passenger(int currentStation){
-	//Set destination to (0 - 4) but not currentStaion
+    //Set destination to (0 - 4) but not currentStaion
     //note a single Random object is reused here
     	
     	int testDestination = getStation();
     	while (testDestination == currentStation){
     		getStation();
     	}
-    	
     	getDestination();
-    	
-    	
     }
     
     public int getStation(){
     	Random randomGenerator = new Random();
     	destination = randomGenerator.nextInt(5);
-		return destination;
+	return destination;
     }
 
-
-	public int getDestination(){
+    public int getDestination(){
         return destination * 5;
     }
-
 }
 
 /*
