@@ -9,7 +9,7 @@
  * Due February 23rd, 2016
  * 
  */
-
+ 
 
 import java.util.Random;
 public class Station implements RouteListener{
@@ -19,37 +19,50 @@ public class Station implements RouteListener{
     private int position;
     private Random passengerGenerator;
 
-	public Station(int inputNumber){
-		line = new QueueOfPassengers<Passenger>(20);
-		position = inputNumber;
-		passengerGenerator = new Random();
-	}
+    public Station(int inputNumber){
+        line = new QueueOfPassengers<Passenger>(20);
+	position = inputNumber;
+	passengerGenerator = new Random();
+    }
 
-	public void simulateTimePassed(RouteEvent routeEvent){
-		findPassengers();
-	}
+    public void simulateTimePassed(RouteEvent routeEvent){
+	findPassengers();
+    }
 
-
-	public Passenger sendNextPassenger(){
-		return line.dequeue();
-	}
-
-	public boolean hasNext(){
-		return !line.isEmpty();
-	}
-
-	public int getPosition(){
+    /**
+     * retrieves the next passenger.
+     * @return next passenger in line by calling dequeue
+     */
+    public Passenger sendNextPassenger(){
+	return line.dequeue();
+    }
+    
+   /**
+    * checks if the queue of the station is empty.
+    * @return true of line is empty, false otherwise
+    */
+    public boolean hasNext(){
+	return !line.isEmpty();
+    }
+        
+   /**
+    * @return position of the station (int value).
+    */
+    public int getPosition(){
         return position;
     }
 
-    
-	 private void findPassengers(){
-		Random r = new Random();
-		int num = r.nextInt(2);
-		for (int i = 0; i < num; i++){
-			Passenger newPassenger = new Passenger(position);
-			line.enqueue(newPassenger);
-		}
+   /**
+    * method used to randomly generate new passengers.
+    * called in simulateTimePassed().
+    */
+    private void findPassengers(){
+        Random r = new Random();
+        int num = r.nextInt(2);
+        for (int i = 0; i < num; i++){
+	Passenger newPassenger = new Passenger(position);
+	line.enqueue(newPassenger);
 	}
+    }
 
 }
