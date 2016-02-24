@@ -80,7 +80,11 @@ public class Train implements RouteListener{
          */
 	public int getCurrentPosition(){
 		return position;
+<<<<<<< HEAD
 	} 
+=======
+	}
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df
 
         /**
          * Changes the train's position based on direction.
@@ -94,4 +98,8 @@ public class Train implements RouteListener{
 	position += directionVector;
 
 	}	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df

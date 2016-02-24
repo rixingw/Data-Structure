@@ -18,7 +18,11 @@ public class Passenger{
     public Passenger(int currentStation){
     	int testDestination = getStation();
     	while (testDestination == currentStation){
+<<<<<<< HEAD
     		testDestination = getStation(); 
+=======
+    		testDestination = getStation();
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df
     	}
     	destination = testDestination;
     }
@@ -38,4 +42,10 @@ public class Passenger{
     public int getDestination(){
         return destination * 5;
     }
+<<<<<<< HEAD
 }
+=======
+}
+
+
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df

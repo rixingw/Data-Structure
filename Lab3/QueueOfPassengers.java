@@ -1,4 +1,4 @@
-/**
+ /**
  * Group 14:
  * Terrance Curley
  * Elvin Xu
@@ -119,4 +119,8 @@ public class QueueOfPassengers<T> implements QueueInterface<T>{
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df
