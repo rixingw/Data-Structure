@@ -20,7 +20,7 @@ Train Constructor
 3.	initialize all passengers from the array as passengers
 
 Current Station
-1.	get current station from 
+1.	get current station from  
 2.	return current station  
 
 Disembark and Board
@@ -39,5 +39,3 @@ Turn around
 1.	checks to see if the train has reached the station at the end
 2.	then changes the direction variable to west if east or if east to west
 3.	returns the direction
-
-
