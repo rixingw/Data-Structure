@@ -1,0 +1,91 @@
+Terrance Curley
+COMP 2071
+Lab 4 Algorithms
+Due 3/1/2016
+
+RUMMY CARD GAME ALGORITHM
+
+CARD:
+- One of four suits (Spades, clubs, hearts, diamonds).
+- Face of the card is a number between two and ten, Jack, Queen, King, or an Ace.
+- Has a Score value.
+- Has a Rank.
+
+PILE:
+- Quantity of Cards in pile?
+- What cards are in the pile?
+- What order are the cards in the pile? Which is on top and bottom?
+- Is the pile facing up or facing down?
+- Take card from a Pile:
+	- Topmost card is removed.
+- Place card into a pile:
+	- Card is placed on top, facing the same way as the rest of the pile
+	
+DECK:
+- Full deck contains 52 cards, 13 different face values each with four suits.
+- A deck has an order.
+- A deck can be shuffled so that the current order of the deck is changed.
+- Card removed from deck:
+	- In this game, removed from the top.
+- Card can be added to deck:
+	- Should happen before a deck is shuffled, so the order shouldn't matter.
+	
+PLAYER HAND:
+- Holds a number of cards.
+- Can draw a card from the pile, adding the topmost card to the hand.
+- Can draw a card from the deck, adding the topmost card to the hand.
+- Can discard a card, placing it into a pile.
+- Cards removed from the hand whenenver a player melds a combination of cards, 
+	placing them on the table.
+- A card is removed when a player chooses to lay off a card, 
+	placing it onto an existing meld.
+
+PLAYER:
+- Has a hand assigned to them.
+- Players take turns in an order.
+- Players have a score.
+- Players have melds that they have created and placed on the table.
+
+GAME:
+- Game played with at least two players and at most six.
+- A target score is chosen before the game. When a player reaches this score they win.
+- Deck is Shuffled.
+- Cards are dealt to the players:
+	- Top card is removed from the deck and added to a players hand.
+	- Next top card is removed and added to the next players hand.
+	- Number of total cards for each player dependent on number of players in a game.
+- After cards are dealt, the discard pile is created using the next top card of the deck.
+	- Cards in the discard pile are facing up.
+- The rest of the deck is placed on the table facing down.
+- Players take turns based on their order.
+- At the start of the turn a player chooses to take a card from either the deck or the discard pile.
+- If the player has any valid groups of cards to be melded, 
+	they may choose to lay a meld on the table, removing these cards from their hand.
+- If one of the player's cards can be added to an existing meld, they can lay off this card, 
+	placing it on their meld and removing it from their hand.
+- At the end of the turn, a player must discard one card. 
+	It is placed on the discard pile face-up.
+- Once a player runs out of cards, they win the hand.
+	- The other players add together the score values of the cards in their hands.
+	- This total value is added to the score of the winning player.
+	- If their total score now surpasses the target score, they win the game.
+	- Otherwise, all of the cards are then placed back in the deck, it is shuffled, 
+		and a new hand is dealt out to each player. The game begins again.
+		
+NOTES:
+- Rank of cards from low to high: Ace, 2, 3, 4, 5, 6, 7, 8, 9, 10, jack, queen, king
+- Score value of cards is based on its face. Ace = 1, 
+	numerical values = number on face, J Q K = 10.
+
+- In a two player game, each player is dealt ten cards.
+- In a three or four player game, each player is dealt seven.
+- In a five or six player game, each player is dealt six cards.
+
+- Melds are always placed face up on the table.
+- A meld can be a sequence of three or more more cards in the same suit, consecutive order.
+- A meld can also be a group of three or four cards with the same rank.
+- Melds cannot be re-arranged after they are placed on the table.
+- If you lay-off a card, the new meld that is created must be valid.
+
+As a source for the correct rules of the game I used the following page for reference:
+https://www.pagat.com/rummy/rummy.html
