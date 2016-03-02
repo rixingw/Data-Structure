@@ -1,0 +1,84 @@
+Texas Holdem Poker
+
+A Card
+Rank:
+-	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10……..2
+-	The rank of suit (ex. heart, spade, club, diamond) does not matter in determining a win or a draw
+-	Remain in its fixed place and its kind cannot be changed
+
+A Pile of Cards – LinkedList Implementation
+Distribution:
+-	Distribute two private cards only to each player
+o	Distribute from the top of a pile one at a time to each player by going clockwise
+-	Distribute three community cards to the table
+o	Distribute three consecutive cards from the top of a pile all at once right after the distribution of the two private cards
+o	Distribute the 4th card and the 5th card
+Shuffle:
+-	Before distribution, the pile of cards will be shuffled.
+-	No shuffle ever during the game
+-	Shuffle the pile of cards all the time once the game ends
+
+A Deck of Cards
+Suit and Kind:
+-	Holds 52 playing cards, with four suits as heart, spade, club, diamond, and with 13 kinds in each suit
+-	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10……..2
+-	The rank of suit (ex. heart, spade, club, diamond) does not matter in determining a win or a draw
+
+A Player’s Hand
+Hand:
+-	Hold two private cards only distributed by the judge and its kinds cannot be changed once distributed
+-	The two private cards cannot be seen by anyone else besides himself/herself
+-	No additional cards can be added
+
+A Player
+Make a decision:
+-	After 3 cards distributed, match his/her two private cards with the 3 community cards to
+o	Give up this turn
+o	Pass this turn
+o	Bet money 
+-	After 4 cards distributed, match his/her two private cards with any three of the 4 community cards to
+o	Give up this turn
+o	Pass this turn
+o	Bet money 
+-	After 5 cards distributed, match his/her two private cards with any three of the 5 community cards to
+o	Give up this turn
+o	Pass this turn
+o	Bet money 
+
+The Game
+Distribution:
+-	Distribute two private cards only to each player
+o	Distribute from the top of a pile one at a time to each player by going clockwise
+-	Distribute three community cards to the table
+o	Distribute three consecutive cards from the top of a pile all at once right after the distribution of the two private cards
+o	Distribute the 4th card and the 5th card
+Shuffle:
+-	Before distribution, the pile of cards will be shuffled.
+-	No shuffle ever during the game
+-	Shuffle the pile of cards all the time once the game ends
+Determine a win or a draw:
+-	If a win, the winner gets the money from betting
+o	Players form the highest combination by his/her 2 private cards with any 3 of the 5 community cards on the table(The rank of winning hands are lowest to highest):
+?	High card: all cards are unpaired, with A ranked as the highest and 2 as the lowest. If the first highest card is same, move on to the next highest card. Ex. (A K 10 5 2)
+?	Pair: one pair of cards from the same rank. If players have the same pair, take the highest rank of remaining 3 cards. Ex. (A A J 7 5)
+?	Two Pairs: two different pairs of cards from its corresponding rank. The highest pair determines the winning hand. If plays have the same two pairs, take the highest rank of the 5th card. Ex. (A A J J 9)
+?	Three of a Kind: Three same cards. If different players share three of a kind, the two remaining cards determine the winning hand. (A A A 10 9)
+?	Straight: a straight of cards from any suit. Ace can be high or low at the same, with ace to five being the lowest and ten to ace being the highest. Ex. (A K Q J 10) (5 4 3 2 A)
+?	Flush: Any five cards from the same suit, such as all diamonds, all hearts, all spades or all clubs. If same, the highest card determines the winning hand. ( K  J  9  8  4) 
+?	Full House: Three of a kind and a pair. If three of a kind is same, the pair determines win. (A A A Q Q)
+?	Four of a Kind: Any four cards from the same rank. If four of a kind are shared, the 5th card determines winning hand. Ex. (A A A A 9)
+?	Straight Flush: The highest combination of all. Five consecutive cards from the exactly same suit. Ace can be high or low at the same, with ace to five being the lowest and ten to ace being the highest.                           Ex. ( A  K  Q   J  10)
+-	If a draw, the winners split up the money from betting
+o	Players share the same combination
+o	The 5 community cards are the highest. 
+
+Notes
+-	This is a real life game aka the Texas Hold’em. This poker game features betting and multi-player in real life. But for this project, it also can feature betting, a computer-player mode, and a multi-player mode
+-	For multiple player mode, the maximum number should no more than 10, but the minimum number should always be greater or equal to 2. 
+-	This game is not possible to run out of cards because each player gets two cards only, and five cards are being used on the table as community cards
+-	The users will have the chance to give up the round, or to pass the round or to raise money if they wish so.
+-	As for betting, this game can enable or disable the betting feature. If betting is enabled, player can raise money to scare his/her opponents if he/she thinks they have a good chance of winning. For this game, the betting feature should be easy to add or delete since it comes with the give-up and pass features. But certainly, with betting featured, it will make the game more exciting and dramatic.
+-	If the players play this game remotely, there is a chance of them cheating like what may happen in all games. Since the 2 private cards are pivotal to playing Texas Hold’em poker game, it will be unfair for the players if some of them expose their private cards to each other.
+
+Thoughts on Implementation
+-	The most difficult part for this game has to be determining the winning conditions. As listed above, there are so many possibilities of how the game will end due to various combinations of kinds and suits.
