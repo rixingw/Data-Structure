@@ -2,11 +2,11 @@ Texas Holdem Poker
 
 A Card
 Rank:
--	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10……..2
+-	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10â€¦â€¦..2
 -	The rank of suit (ex. heart, spade, club, diamond) does not matter in determining a win or a draw
 -	Remain in its fixed place and its kind cannot be changed
 
-A Pile of Cards – LinkedList Implementation
+A Pile of Cards â€“ LinkedList Implementation
 Distribution:
 -	Distribute two private cards only to each player
 o	Distribute from the top of a pile one at a time to each player by going clockwise
@@ -21,10 +21,10 @@ Shuffle:
 A Deck of Cards
 Suit and Kind:
 -	Holds 52 playing cards, with four suits as heart, spade, club, diamond, and with 13 kinds in each suit
--	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10……..2
+-	The rank of the kinds with A being the highest rank, followed by K, Q, J, 10â€¦â€¦..2
 -	The rank of suit (ex. heart, spade, club, diamond) does not matter in determining a win or a draw
 
-A Player’s Hand
+A Playerâ€™s Hand
 Hand:
 -	Hold two private cards only distributed by the judge and its kinds cannot be changed once distributed
 -	The two private cards cannot be seen by anyone else besides himself/herself
@@ -73,12 +73,12 @@ o	Players share the same combination
 o	The 5 community cards are the highest. 
 
 Notes
--	This is a real life game aka the Texas Hold’em. This poker game features betting and multi-player in real life. But for this project, it also can feature betting, a computer-player mode, and a multi-player mode
+-	This is a real life game aka the Texas Holdâ€™em. This poker game features betting and multi-player in real life. But for this project, it also can feature betting, a computer-player mode, and a multi-player mode
 -	For multiple player mode, the maximum number should no more than 10, but the minimum number should always be greater or equal to 2. 
 -	This game is not possible to run out of cards because each player gets two cards only, and five cards are being used on the table as community cards
 -	The users will have the chance to give up the round, or to pass the round or to raise money if they wish so.
 -	As for betting, this game can enable or disable the betting feature. If betting is enabled, player can raise money to scare his/her opponents if he/she thinks they have a good chance of winning. For this game, the betting feature should be easy to add or delete since it comes with the give-up and pass features. But certainly, with betting featured, it will make the game more exciting and dramatic.
--	If the players play this game remotely, there is a chance of them cheating like what may happen in all games. Since the 2 private cards are pivotal to playing Texas Hold’em poker game, it will be unfair for the players if some of them expose their private cards to each other.
+-	If the players play this game remotely, there is a chance of them cheating like what may happen in all games. Since the 2 private cards are pivotal to playing Texas Holdâ€™em poker game, it will be unfair for the players if some of them expose their private cards to each other.
 
 Thoughts on Implementation
 -	The most difficult part for this game has to be determining the winning conditions. As listed above, there are so many possibilities of how the game will end due to various combinations of kinds and suits.
