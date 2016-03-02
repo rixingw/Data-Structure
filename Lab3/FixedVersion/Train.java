@@ -23,7 +23,7 @@ public class Train implements RouteListener{
 
 
 	public Train( int initialPosition){
-		position = initialPosition;
+		position = initialPosition; 
 	}
 	
         /**

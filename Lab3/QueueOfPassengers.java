@@ -106,7 +106,7 @@ public class QueueOfPassengers<T> implements QueueInterface<T>{
             frontIndex = 0;
             backIndex = oldSize - 2;
         }
-    }
+    } 
     
     private void checkInitialization(){
         if (!initialized)
@@ -119,4 +119,8 @@ public class QueueOfPassengers<T> implements QueueInterface<T>{
     }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df

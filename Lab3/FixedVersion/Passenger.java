@@ -39,5 +39,3 @@ public class Passenger{
         return destination * 5;
     }
 }
-
-

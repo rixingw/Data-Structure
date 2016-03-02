@@ -19,7 +19,7 @@ The queue uses a first in, first out structure.
 	- If it is called without passing in an integer, it will instead use a default capacity of 50 elements.
 	- An array is created to store the contents of the queue. Its initial size will be one larger than the capacity specified for the constructor.
 	- The queue class contains a front index to show the front of the queue, and a back index, to specify the back of the queue.
-	- When the queue is constructed the front index is set to zero and the back index is set to the capacity of the queue.
+	- When the queue is constructed the front index is set to zero and the back index is set to the capacity of the queue. 
 	
 2. A method is encluded to ensure capacity (see if there is room in the queue).
 	- Check if queue is full, If it is, a new array should be constructed with double the initial capacity.

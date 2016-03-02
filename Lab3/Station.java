@@ -8,7 +8,8 @@
  * Lab 3 Train Problem
  * Due February 23rd, 2016
  * 
- */
+ */ 
+
 
 
 import java.util.Random;
@@ -65,4 +66,8 @@ public class Station implements RouteListener{
 	}
     }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df

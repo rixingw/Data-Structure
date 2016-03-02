@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+/**
+=======
  /**
+>>>>>>> e38d12d726920cb3e888eedb919b4487b2beb0df
  * Group 14:
  * Terrance Curley
  * Elvin Xu
@@ -17,7 +21,7 @@ import java.lang.StringBuilder;
 
 public class QueueOfPassengers<T> implements QueueInterface<T>{
 
-    private T[] queue;
+    private T[] queue; 
     
     private int frontIndex;
     private int backIndex;
