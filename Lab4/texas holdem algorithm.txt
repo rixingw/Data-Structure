@@ -1,0 +1,39 @@
+Texas hold’em 
+ 
+Process (at a casino)
+-	Professional dealer waits for at least 2 people to sit down at the table
+-	Players are given a fixed amount of chips 
+-	Players are assigned the dealer, big blind, and small blind buttons
+-	Big blind sets buy in bet, other players must put in at least 100x the best of big blind
+-	Other players place equal amount to play in the game
+-	Shuffles the cards
+-	Deals cards to players
+-	Round 1 of betting
+-	Pro dealer deals the flop, 4 cards total, first card is “burned”
+-	Round 2 of betting
+-	Pro dealer deals the turn, 2 cards total, first card is “burned” 
+-	Round 3 of betting
+-	Pro dealer deals the river, 2 cards total, first card is “burned”
+-	Round 4 of betting
+-	Players then show their 2 cards and whoever has best hand wins 
+
+Pro dealer
+-	Assign dealer, and blinds
+-	Open pack of cards, then shuffle cards
+-	Deal cards from shuffled deck to players 
+-	Deals flop, turn and river from deck of cards
+
+Player
+-	Select a table to sit at
+-	Receive 2 playing cards from the deck 
+-	Place bets
+-	Analyze flop cards and determine if it is worth it to stay in the game, apply bet if hand is decent, fold if there is no good hand 
+-	Analyze turn card and determine if it is worth it to stay in game, apply bet if hand is decent, fold if u have no hand. 
+-	Analyze river card plus other cards on the table and see if it is worth staying in the game, apply bets if hand is good, fold if it isn’t. 
+
+Table
+-	Holds one deck of cards and chips
+-	Set number of players
+o	Min of 1 and max of 6 
+o	If there is just one player, add a cpu  
+-	One Pro dealer seat
