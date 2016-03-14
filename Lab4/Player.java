@@ -40,6 +40,6 @@ public class Player {
 	
     public void showTwoCards(String name){
         System.out.println("Player " + name + " holds these two cards: ");
-        System.out.println(card1OnHand + card2OnHand + "\n");
+        System.out.println(card1OnHand + " and " + card2OnHand + "\n");
     }
 }
