@@ -32,7 +32,7 @@ public class Main extends Application{
         GraphicsContext gc = canvas.getGraphicsContext2D();
         Image bgImg = new Image("images/background.jpg");
         gc.drawImage(bgImg,0,0);
-          Image card = new Image("images/G♡.png");
+          Image card = new Image("images/QS.png");
         gc.drawImage(card, 60, 50);
 
         window.setScene(scene);
