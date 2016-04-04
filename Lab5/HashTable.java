@@ -1,19 +1,27 @@
 
-import java.math.BigInteger;
+/**
+ *  Rxing Wu
+ *  Lab5
+ */
 
+import java.math.BigInteger;
 class HashTable {
   private int capacity;
   private int size;
   private Node[] table;
 
-// Optional size
+  /** Constructor
+   * @param max size to use (Better performance)
+   */
   public HashTable(int maxSize){
     capacity = maxSize;
     table = new Node[maxSize];
     size = 0;
   }
 
-// initial size
+  /** Constructor  intitial size = 11
+   *  More memeory efficient
+   */
   public HashTable(){
     this(11);
   }
@@ -25,6 +33,9 @@ class HashTable {
   }
 
 
+  /** add a word to the table or add to chain if hashCode already exists
+   * @param word the text to add
+   */
   public void add(String word){
     //Case  insensitive
     word = word.toLowerCase();
@@ -62,13 +73,18 @@ class HashTable {
 }
 
 
-
+  /** Find the next prime number after (the numeric value) capacity
+   *@return the next prime
+   */
  private int nextProbablePrime(){
    BigInteger currentSize = new BigInteger(Integer.toString(capacity));
    BigInteger nxPrime = currentSize.nextProbablePrime();
    return nxPrime.intValue();
  }
 
+ /** Generate a integer hash code of a word
+  *@return an integer that identify a word based on its characters
+  */
   private int generateHashCode(String word){
     int hCode = 0;
     for (char c: word.toCharArray()){
@@ -78,14 +94,18 @@ class HashTable {
   }
 
 
-private void resize(){
-  int newSize = nextProbablePrime();
-  System.out.println(newSize);
-  Node[] orig = table.clone();
-  table = new Node[newSize];
-  System.arraycopy( orig, 0, table, 0, orig.length);
-}
+  /** Use to resize the hashtable when needed
+   */
+  private void resize(){
+    int newSize = nextProbablePrime();
+    System.out.println(newSize);
+    Node[] orig = table.clone();
+    table = new Node[newSize];
+    System.arraycopy( orig, 0, table, 0, orig.length);
+  }
 
+  /** Prints a textual representation of the hashtable
+   */
   public void printTable(){
     System.out.println(" Hashtable size : " + size + " capacity : " + capacity);
       for(Node n : table){
@@ -101,6 +121,8 @@ private void resize(){
       }
   }
 
+
+//** test code */
   public static void main(String[] args) {
     HashTable ht = new HashTable();
     ht.addAll("tac", "dog", "Dog", "cat", "rabbit", "Rait", "egg", "gge","rabbit", "Rait", "egg", "gge", "sdfhbsdfbdskfbdsfk", "sdfsdfhbd");
