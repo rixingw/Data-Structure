@@ -98,7 +98,6 @@ class HashTable {
    */
   private void resize(){
     int newSize = nextProbablePrime();
-    System.out.println(newSize);
     Node[] orig = table.clone();
     table = new Node[newSize];
     System.arraycopy( orig, 0, table, 0, orig.length);
@@ -122,11 +121,45 @@ class HashTable {
   }
 
 
+  /** Array of words that has the same hashnode
+   *
+   */
+  public Node[] findAnagramOfWord(String text){
+    int hCord = generateHashCode(text);
+    Node[] anagram = new Node[0];
+
+    if (hCord > capacity || table[hCord] == null){
+      return anagram;
+    }
+
+    Node head = table[hCord];
+    while(head != null){
+      Node[] copy = anagram.clone();
+      anagram = new Node[anagram.length + 1];
+      System.arraycopy( copy, 0, anagram, 0, copy.length);
+
+      anagram[anagram.length -1] = head;
+      head = head.getNext();
+    }
+    return anagram;
+  }
+
 //** test code */
   public static void main(String[] args) {
     HashTable ht = new HashTable();
     ht.addAll("tac", "dog", "Dog", "cat", "rabbit", "Rait", "egg", "gge","rabbit", "Rait", "egg", "gge", "sdfhbsdfbdskfbdsfk", "sdfsdfhbd");
+
+    ht.addAll("apple", "elppa", "leppa");
+
     ht.printTable();
+    System.out.println();
+    Node[] result = ht.findAnagramOfWord("apple");
+    System.out.println("Anagram of apple");
+    for (Node n : result){
+      System.out.print(n + " \t");
+    }
+    System.out.println();
+
   }
 
 
