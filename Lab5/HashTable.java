@@ -4,10 +4,13 @@
  *  Lab5
  */
 
-import java.math.BigInteger;
+import java.math.*;
+import java.util.ArrayList;
+import java.util.Collections;
+
 class HashTable {
   private int capacity;
-  private int size;
+  private int entries;
   private Node[] table;
 
   /** Constructor
@@ -16,7 +19,7 @@ class HashTable {
   public HashTable(int maxSize){
     capacity = maxSize;
     table = new Node[maxSize];
-    size = 0;
+    entries = 0;
   }
 
   /** Constructor  intitial size = 11
@@ -37,21 +40,17 @@ class HashTable {
    * @param word the text to add
    */
   public void add(String word){
-    //Case  insensitive
-    word = word.toLowerCase();
-    int hCode = generateHashCode(word);
-
-    if (hCode > capacity){
-      capacity = hCode + 1;
+    if (loadFactor() >= 1.0){
       resize();
     }
-
-    if (table[hCode] == null){
+    word = word.toLowerCase();
+    int hashIndex = getHashIndex(word);
+    if (table[hashIndex] == null){
       Node head = new Node(word);
-      table[hCode] = head;
-      size++;
+      table[hashIndex] = head;
+      entries++;
     }else{
-      Node head = table[hCode];
+      Node head = table[hashIndex];
       Node temp = head;
       while(temp != null){
         if (temp.getKey().equals(word)){
@@ -61,6 +60,7 @@ class HashTable {
           if (temp.getNext() == null){
             Node next = new Node(word);
             temp.setNext(next);
+            entries++;
             return;
           }else{
             temp = temp.getNext();
@@ -76,8 +76,8 @@ class HashTable {
   /** Find the next prime number after (the numeric value) capacity
    *@return the next prime
    */
- private int nextProbablePrime(){
-   BigInteger currentSize = new BigInteger(Integer.toString(capacity));
+ private int nextProbablePrime(int num){
+   BigInteger currentSize = new BigInteger(Integer.toString(num));
    BigInteger nxPrime = currentSize.nextProbablePrime();
    return nxPrime.intValue();
  }
@@ -96,53 +96,116 @@ class HashTable {
 
   /** Use to resize the hashtable when needed
    */
-  private void resize(){
-    int newSize = nextProbablePrime();
+  public void resize(){
+    int newSize = nextProbablePrime(capacity * 2);
+    System.out.println("\nExceeded table load factor threshold...");
+    printMetrics();
+    System.out.println("Resizing from " + capacity + " to " + newSize + "...");
+    capacity = newSize;
+    entries = 0;
     Node[] orig = table.clone();
-    table = new Node[newSize];
-    System.arraycopy( orig, 0, table, 0, orig.length);
+    table = new Node[capacity];
+    for(Node n : orig){
+      if (n != null){
+        Node curr = n;
+        while(curr != null){
+          add(curr.getKey());
+          curr = curr.getNext();
+        }
+      }
+    }
+    printMetrics();
+    System.out.println();
   }
+
+  private double loadFactor(){
+    return entries/(double)capacity;
+  }
+
+
 
   /** Prints a textual representation of the hashtable
    */
-  public void printTable(){
-    System.out.println(" Hashtable size : " + size + " capacity : " + capacity);
-      for(Node n : table){
-        if (n != null){
-          Node curr = n;
-          System.out.print(generateHashCode(n.getKey()) + ": ");
+  public void printMetrics(){
+      ArrayList<Integer> metrics = new ArrayList<>();
+      for(Node head : table){
+        if (head != null){
+            Node curr = head;
+          int count = 0;
           while(curr != null){
-            System.out.print( "  ->  " + curr);
+            count++;
             curr = curr.getNext();
           }
-          System.out.println();
+          metrics.add(count);
         }
       }
+
+      int buckets = 0;
+      int minimum = 0, maximum = 0, mode = 0;
+      double  total = 0.0, mean = 0.0, median = 0.0, percFill = 0.0, load = 0.0;
+
+      Collections.sort(metrics);
+      minimum = Collections.min(metrics);
+      maximum = Collections.max(metrics);
+
+      load = loadFactor();
+
+      // percent fill
+      percFill = (double)buckets / (double)capacity;
+
+      buckets = metrics.size();
+
+      for (int i : metrics){
+        total+= (double)i;
+      }
+      //Average -----------------------
+      mean = total / buckets;
+
+      //Medium -----------------------
+          int mid = metrics.size()/2;
+      if (metrics.size() % 2 == 0)
+            median = (double)(metrics.get(mid) + metrics.get(mid - 1))/ 2.0;
+      else
+            median = (double) metrics.get(mid);
+      //Mode -----------------------
+
+          int maxValue = 0, maxCount = 0;
+            for (int i = 0; i < metrics.size(); ++i) {
+                int num = 0;
+                for (int j = 0; j < metrics.size(); ++j) {
+                    if (metrics.get(j) == metrics.get(i)){++num;}
+                }
+                if (num > maxCount) {
+                    maxCount = num;
+                    maxValue = metrics.get(i);
+                }
+            }
+        mode = maxValue;
+
+      System.out.println("Table size   : " + capacity);
+      System.out.println("# of entries : " + entries);
+      System.out.println("Load Factor  : " + load);
+      System.out.println("# of Buckets : " + buckets);
+      System.out.println("Minimum      : " + minimum);
+      System.out.println("Maximum      : " + maximum);
+      System.out.println("Mean         : " + mean);
+      System.out.println("Medium       : " + median);
+      if (mode != 0){
+      System.out.println("Mode         : " + mode);
+      }
+
+
   }
 
-
-  /** Array of words that has the same hashnode
-   *
-   */
-  public Node[] findAnagramOfWord(String text){
-    int hCord = generateHashCode(text);
-    Node[] anagram = new Node[0];
-
-    if (hCord > capacity || table[hCord] == null){
-      return anagram;
-    }
-
-    Node head = table[hCord];
-    while(head != null){
-      Node[] copy = anagram.clone();
-      anagram = new Node[anagram.length + 1];
-      System.arraycopy( copy, 0, anagram, 0, copy.length);
-
-      anagram[anagram.length -1] = head;
-      head = head.getNext();
-    }
-    return anagram;
+  private int getHashIndex(String word){
+      int hashCode = generateHashCode(word);
+      int hashIndex = hashCode % capacity;
+      if (hashIndex < 0){
+        hashIndex = hashIndex + capacity;
+      }
+      return hashIndex;
   }
+
 
 //** test code */
   public static void main(String[] args) {
@@ -151,15 +214,8 @@ class HashTable {
 
     ht.addAll("apple", "elppa", "leppa");
 
-    ht.printTable();
+    ht.printMetrics();
     System.out.println();
-    Node[] result = ht.findAnagramOfWord("apple");
-    System.out.println("Anagram of apple");
-    for (Node n : result){
-      System.out.print(n + " \t");
-    }
-    System.out.println();
-
   }
 
 

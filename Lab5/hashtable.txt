@@ -1,0 +1,146 @@
+HASH TABLES
+COMP 2071 OBJECT ORIENTED DATA STRUCTURES IN JAVA
+
+TOPICS
+Hash Table applications and implementations
+
+READINGS
+CARRANO: Chapters 19 & 20 (read as much as you will need for the assignment)
+
+OBJECTIVES
+Be able to
+* Implement a Hash table ADT 
+* Use your Hash table in an application.
+
+
+INSTRUCTIONS
+1. (Optional) Select a Partner
+2. Read over the assignment and ASK QUESTIONS about anything that you don’t understand (before you start).
+3. Do the problem described in the next section
+a. Be sure to follow Good Programming Practices,
+b. Keep in mind Guidelines on plagiarism. 
+4. Do a Write-up (Analysis / Summary) for your project.  
+5. Follow instructions for submitting your work.
+6. Demonstrate your running program to the instructor.
+
+
+
+
+
+
+
+PROBLEM
+OVERVIEW
+	Count the occurrence of each word in an input file using a hash table (that you write yourself) and then print out the results
+ 
+HASH TABLE IMPLEMENTATION
+ WRITE HASHTABLE CLASS (AND ANY NECESSARY HELPER CLASSES THAT YOU’LL NEED)
+*  Separate chaining is the strategy used to handle collision, which means the structure of the Hash table looks like the picture below (see the Hash Table ADT lecture). 
+
+* The hash table size should be variable (not hard coded) according to user input, so that you can test with a variety of values.
+* Keys will be the words from the input file and the values will be a count (of their occurrences). 
+* Method for converting a key to its hash code (index into the hash table) is up to you, but a simple option is to sum the UNICODE VALUE of each character. Just make sure to account for case (i.e., do you consider upper and lower case to be equivalent?). For example:  
+
+
+
+       
+WRITE A WORDCOUNT CLASS TO 
+* Read in a text file
+* As you read in each word, look it up in the hash table
+o If word is found, increment the count. 
+o If word is not found, add the word to the hash table (set count to 1).  
+* When the end of file is reached 
+o print out the words and their counts
+
+
+
+TESTING 
+Run your program numerous times varying Input files and Hash table sizes, keeping a record of your results. These results will be used in the write-up section that follows.
+
+
+WRITE-UP
+Answer the following, either in paragraph form or as answers to the numbered items, and include with your submission. 
+ANALYSIS
+      Based on your results: 
+a. What are your observations about the relationship between file size and hash table size?
+b. Do you think there is a universally ideal hash table size for this problem? If not, what do you think the hash table size should depend on?
+c. What should be the correlation between word frequency and chain length?  How can we influence chain length in this respect?
+d. What is your observation about how well disbursed the words are in the hash table (i.e., are most of the words hashed to just a few locations, or do most of the buckets have words)?  Did varying the hash table size have an effect on disbursement of words? If so, in what way? 
+e. What might be a better hash code, or what made your hash code work?
+SUMMARY
+* If you worked in pairs:
+o How did you “divide up” the work so that each student still met the objectives for the assignment (i.e., learned, understood and applied the concepts).
+o What was your contribution?
+o How did you coordinate code changes/testing?
+o Other observations about working with a partner?
+* Where did you have trouble with this assignment? How did you move forward? What topics still confuse you? 
+* What did you learn from this assignment? (Please be specific)
+
+GOOD PROGRAMMING PRACTICES
+For all classes
+* Make your instance variables private
+* Include constructors to initialize your instance variables.
+* Derived class constructors should leave initialization of super class instance variables to the super classes’ constructors:
+o Remember the call to the super classes constructor is:   super( <init1>, <init2>,..) 
+* Include Accessor and Mutator methods for all instance variables (please ask if you’re not sure what these are)
+* Include a main method for testing (unless it’s an abstract class) and test before you “use” the class. 
+* Add comments to your code, not just so it’s easier for other readers, but also so it’s easier for you to remember your logic.
+
+SUBMITTING YOUR WORK
+1. Make sure that your group number and name(s) are in all of your project files.  
+2. Make a .zip file (not a .rar file) for your project and include all files:
+a. solution (code)
+b. write-up
+c. sample screen captures of running tests + solution (must include these in your write-up document)
+d. PowerPoint presentation (see next section)
+All deliverables must be submitted in a single .zip file (if you cannot create a .zip, see me for alternatives before submitting)
+3. In Blackboard each group must:
+a. Attach your compressed file
+b. Submit
+
+PRESENTING YOUR WORK
+1. Each project team will present its project to the class (see the class schedule for presentation date(s)).
+2. Each presentation should:
+a. Take 3-5 minutes, including Q&A
+b. PowerPoint slide(s) summarizing:
+i. Your group number and name(s)
+ii. Design decisions (include trade-offs)
+iii. Issues that arose and how you addressed and resolved them
+iv. Outstanding issues/bugs; how you addressed them so far and how you would continue to work to resolve  them
+v. Potential enhancements
+vi. Lessons learned
+c. Demonstrate your solution (if not fully functional, the parts which work)
+
+GUIDELINES ON PLAGIARISM IN COMPUTER SCIENCE
+CLEAR PLAGIARISM
+A clear case of plagiarism exists if a student passes off someone else's work as his or her own. Examples of such behavior include (but are not limited to) the following:
+* A group of students each performing a separate part of an assignment. Each student in the group then hands in the cumulative effort as his or her own work.
+* A student making cosmetic alterations to another's work and then handing it in as his or her own.
+* A student having another person complete an assignment and then handing it in as his or her own.
+* A student handing in (as his or her own) a solution to an assignment performed by someone else from a previous offering of the course.
+These are all cases of indisputable plagiarism and are characterized by the submission of work, performed by another, under one's own name.  
+PERMITTED COLLABORATION
+Collaboration and research, where they do not constitute plagiarism, should be generally encouraged. These efforts constitute honest attempts at obtaining a deeper understanding of the problem at hand. They can also serve as a validation of a student's approach to a problem. Some examples are as follows:
+* A student researching existing, public approaches to a problem presented as an assignment.
+* A group of students discussing existing, public approaches to a problem presented as an assignment.
+* A group of students discussing the requirements of an assignment.
+* A student discussing the merits of his or her proposed solution to an assignment with the instructor or teaching assistant.
+Provided that no plagiarism is committed, these are all valid (and encouraged) activities.
+THE GRAY AREA
+The differences between the examples of plagiarism and encouraged collaboration above are those of originality and acknowledgment. In general, any work submitted without acknowledgment which is not the original work of the indicated author constitutes plagiarism. Some examples which illustrate this point follow. It should be noted that while some of the examples do not constitute academic misconduct, they may be of questionable academic value. It should also be noted that anyone (knowingly or through negligence) contributing to someone else's academic misconduct is also guilty of the same.
+* It is acceptable to use solution proposals presented by the instructor or teaching assistant. The acknowledgment is implicit. Explicit acknowledgment is not usually required.
+* It is not acceptable to use publicly available work without acknowledgment.
+* It is not acceptable to use a full or partial solution obtained from or by another through any means (verbal, written, electronic, etc.), without that person's permission.
+* It is not acceptable to collaborate on a single solution without acknowledgment.
+* It is not acceptable to discuss solutions or partial solutions to a problem and then incorporate them without acknowledgment.
+* It is acceptable to implement a standard solution to a problem without acknowledgment, but it is not acceptable to incorporate someone else's implementation without acknowledgment. Here standard solution means a commonly used data structure or algorithm.
+* It is not acceptable to re-submit an assignment from another course or a previous offering of the same course without acknowledgment, regardless of authorship.
+* It is not acceptable to make a solution available as an aid to others.
+This set of examples helps define the bounds between encouraged behavior and misconduct, but does not constitute an exhaustive set.
+
+
+Wentworth Institute of Technology	00Computer Science Department
+
+Dave Rosenberg                                                            Page 1 of 5                                                          April 3, 2016
+
+

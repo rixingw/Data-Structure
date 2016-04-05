@@ -35,7 +35,7 @@ class Node{
   }
 
   public String toString(){
-      String str = "[" + key + ":" + Integer.toString(count) + "]";
+      String str = "[" + key + ": " + Integer.toString(count) + "]";
       return str;
   }
 
