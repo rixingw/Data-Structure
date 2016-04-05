@@ -100,7 +100,7 @@ class HashTable {
     int newSize = nextProbablePrime(capacity * 2);
     System.out.println("\nExceeded table load factor threshold...");
     printMetrics();
-    System.out.println("Resizing from " + capacity + " to " + newSize + "...");
+    System.out.println("\nResizing from " + capacity + " to " + newSize + "...");
     capacity = newSize;
     entries = 0;
     Node[] orig = table.clone();
@@ -149,11 +149,11 @@ class HashTable {
       maximum = Collections.max(metrics);
 
       load = loadFactor();
+      buckets = metrics.size();
 
       // percent fill
-      percFill = (double)buckets / (double)capacity;
+      percFill = ((double)buckets / (double)capacity) * 100.0;
 
-      buckets = metrics.size();
 
       for (int i : metrics){
         total+= (double)i;
@@ -182,16 +182,17 @@ class HashTable {
             }
         mode = maxValue;
 
-      System.out.println("Table size   : " + capacity);
-      System.out.println("# of entries : " + entries);
-      System.out.println("Load Factor  : " + load);
-      System.out.println("# of Buckets : " + buckets);
-      System.out.println("Minimum      : " + minimum);
-      System.out.println("Maximum      : " + maximum);
-      System.out.println("Mean         : " + mean);
-      System.out.println("Medium       : " + median);
+      System.out.println("    Table size : " + capacity);
+      System.out.println("  # of entries : " + entries);
+      System.out.printf("   Load Factor : %.3f\n", load);
+      System.out.println(" # of Buckets : " + buckets);
+      System.out.printf("Percent Filled : %.2f%%\n", percFill);
+      System.out.println("       Minimum : " + minimum);
+      System.out.println("       Maximum : " + maximum);
+      System.out.printf("          Mean : %.3f\n", mean);
+      System.out.println("        Medium : " + median);
       if (mode != 0){
-      System.out.println("Mode         : " + mode);
+      System.out.println("         Mode  : " + mode);
       }
 
 
